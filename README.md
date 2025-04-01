@@ -43,8 +43,16 @@ We utilize the Medallion architecture within Microsoft Fabric to structure our d
 
 ## Data Processing Flow
 
-1.  **Bronze to Silver:** Notebooks or Dataflows read data from the Bronze layer, perform cleaning (handling nulls, duplicates, data type correction), validation, and enrichment (joining with product/customer dimensions). The cleaned data is stored as Delta tables in the Silver layer.
-2.  **Silver to Gold:** Notebooks process Silver layer data to create aggregated datasets suitable for sales forecasting (e.g., weekly sales per item). Feature engineering steps (e.g., creating lag features, rolling averages) are performed. The final, curated data is stored in the Gold layer, potentially in a Warehouse or as optimized Delta tables in the Lakehouse.
+1.  **Bronze to Silver:** Notebooks (like `Spice_Test.ipynb`) read raw data (e.g., `SalesData.csv`) from the Bronze layer. Cleaning involves:
+    *   Handling null values in key columns (`Quantity Sold`, `Revenue`).
+    *   Converting date columns to the correct `DateType`.
+    *   Extracting date components (`Year`, `Month`, `Day`, `Weekday`) for easier analysis and feature engineering.
+    The cleaned, validated data is stored as a Delta table (e.g., `CleanedSalesData`) in the Silver layer.
+2.  **Silver to Gold:** Notebooks process the cleaned Silver layer data. This involves:
+    *   Aggregating data to the desired granularity (e.g., calculating total monthly quantity and revenue per product).
+    *   Transforming data into a structure suitable for modeling, such as pivoting the table to have time periods (Year, Month) as rows and products as columns, with sales quantity as values (e.g., `PivotedSalesQuantity` table).
+    *   Further feature engineering (lag features, rolling averages) might be applied here depending on the modeling approach.
+    The final, curated, and aggregated data is stored in the Gold layer, ready for reporting and ML model training.
 
 ## Fabric Features & Azure AI
 
