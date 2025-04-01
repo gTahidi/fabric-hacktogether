@@ -27,11 +27,17 @@ The Medallion architecture provides clear separation:
 
 ### Azure AI set up
 
-*   **Current Scope:** This project primarily utilizes the built-in capabilities of Microsoft Fabric, including its integrated MLflow for experiment tracking within Notebooks.
-*   **Potential Integration (If Extending):**
-    1.  **Azure Machine Learning Workspace:** Provision an Azure Machine Learning workspace if advanced capabilities (e.g., managed endpoints, custom model deployments beyond Fabric's scope) are needed.
-    2.  **Linking:** Connect the Fabric workspace to the Azure ML workspace if required for specific cross-platform scenarios (though often MLflow within Fabric is sufficient).
-    3.  **Compute:** Configure compute resources within Azure ML if training or deploying models there.
+*   **MLflow:** Fabric's integrated MLflow is used for tracking experiments run within Fabric Notebooks (e.g., during model training on `PivotedSalesQuantity` data). No separate setup is needed for this core functionality.
+*   **Azure Machine Learning Integration (Optional):**
+    1.  **Provision Azure ML:** Create an Azure Machine Learning workspace in Azure for advanced ML operations.
+    2.  **Link Workspaces:** Connect the Fabric workspace to the Azure ML workspace if needed (e.g., for deploying models trained in Fabric to Azure ML managed endpoints).
+*   **Azure OpenAI for Natural Language Querying (Optional):**
+    1.  **Provision Azure OpenAI:** Deploy an Azure OpenAI service instance in Azure with a suitable model (e.g., GPT-4).
+    2.  **Data Access Strategy:** Determine how Azure OpenAI will access the Gold layer data (e.g., `PivotedSalesQuantity` table in the Lakehouse/Warehouse). Options include:
+        *   **API/Function Calling:** Develop a function (e.g., Azure Function, API endpoint) that queries the Fabric Lakehouse/Warehouse SQL endpoint based on parameters derived from the user's natural language query processed by OpenAI.
+        *   **Data Export/Caching:** Periodically export relevant Gold data summaries to a location accessible by the OpenAI application (e.g., Azure Blob Storage, Azure Cosmos DB).
+        *   **Direct Lake / Semantic Link (Future):** Leverage evolving Fabric features that might allow more direct integration between Power BI datasets (connected to the Gold layer) and AI services.
+    3.  **Develop Application Logic:** Build the application layer that takes user input, interacts with Azure OpenAI for understanding the query, triggers the appropriate data retrieval method, and presents the results back to the user. Securely manage credentials for accessing both Azure OpenAI and Fabric data endpoints.
 
 ## Technologies Used
 

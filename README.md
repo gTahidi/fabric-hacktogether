@@ -56,8 +56,10 @@ We utilize the Medallion architecture within Microsoft Fabric to structure our d
 
 ## Fabric Features & Azure AI
 
-*   **Microsoft Fabric:** Leverages OneLake, Lakehouse, Warehouse, Data Factory, Dataflows Gen2, Notebooks (Spark), and Power BI for an integrated data platform experience.
-*   **Azure AI (Potential):** While the core focus is Fabric, Azure Machine Learning could be integrated for advanced model training, deployment (MLflow tracking within Fabric), and monitoring if needed for more complex forecasting scenarios. (Details to be added based on actual implementation).
+*   **Microsoft Fabric:** Leverages OneLake, Lakehouse, Warehouse, Data Factory, Dataflows Gen2, Notebooks (Spark), MLflow integration, and Power BI for an integrated data platform experience.
+*   **Azure AI (Potential):**
+    *   **Azure Machine Learning:** Can be integrated for advanced model training, deployment, and monitoring beyond Fabric's built-in capabilities. MLflow within Fabric facilitates this transition.
+    *   **Azure OpenAI / AI Search:** The curated Gold layer data (e.g., `PivotedSalesQuantity`) can be surfaced to Azure AI services. For instance, Azure OpenAI could be used to enable natural language querying of sales trends or insights directly from the processed data stored in the Lakehouse/Warehouse. This allows business users to ask questions like "What were the top 3 selling products in Q4 2024?" or "Summarize the sales trend for Product X over the last year."
 
 
 
