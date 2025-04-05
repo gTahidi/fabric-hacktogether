@@ -1,0 +1,38 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.8
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.1
+mlflow_version: 2.12.2
+model_size_bytes: 49589
+model_uuid: 5988146438954e9280e4b8b17abe43d6
+run_id: aa8aa72e-ccad-4f0d-95f7-77070e94f3b8
+signature:
+  inputs: '[{"type": "datetime", "name": "Month", "required": true}, {"type": "long",
+    "name": "Year", "required": true}, {"type": "string", "name": "Dept_Name", "required":
+    true}, {"type": "string", "name": "Section_Name", "required": true}, {"type":
+    "string", "name": "Family_name", "required": true}, {"type": "string", "name":
+    "Sub_Family_Name", "required": true}, {"type": "string", "name": "Brand_Principle",
+    "required": true}, {"type": "string", "name": "Brand_Name", "required": true},
+    {"type": "string", "name": "SupplierName", "required": true}, {"type": "long",
+    "name": "Item_Code", "required": true}, {"type": "long", "name": "Item_Bar_Code",
+    "required": true}, {"type": "string", "name": "Item_Name", "required": true},
+    {"type": "string", "name": "BRAND", "required": true}, {"type": "string", "name":
+    "TYPE", "required": true}, {"type": "string", "name": "VARIANTS_2", "required":
+    true}, {"type": "string", "name": "CATEGORY", "required": true}, {"type": "string",
+    "name": "SUPER_CATEGORY", "required": true}, {"type": "string", "name": "PACKAGING",
+    "required": true}, {"type": "string", "name": "Storename", "required": true},
+    {"type": "long", "name": "Qty", "required": true}]'
+  outputs: '[{"type": "double", "name": "PRICE", "required": true}]'
+  params: null
+utc_time_created: '2025-04-05 08:36:35.454253'

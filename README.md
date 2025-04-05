@@ -1,44 +1,76 @@
-# fabric-hacktogether
-A submission for the Microsoft Hack together Hackathon, demonstranting the application of Microsoft Fabric to real world data problems
-The architectural components of the project are detailed below:
+# Microsoft Fabric Hackathon Proposal: Retail Sales Prediction
 
-## Introduction and Overview
+**Team/Submitter:** [Ujao AI ]
+**Date:** 2025-04-01
 
-This project demonstrates the application of Microsoft Fabric to address a real-world data problem: sales prediction for a local retailer. By leveraging the capabilities of Fabric, we aim to build an end-to-end solution that ingests raw sales data, processes it through a Medallion architecture, and ultimately provides accurate sales forecasts. This solution helps the retailer optimize inventory, staffing, and marketing efforts based on data-driven insights.
+## 1. Abstract/Summary
 
-## Problem Statement
+This project proposes the development of a sales prediction solution for a local retailing company,  leveraging the unified analytics capabilities of Microsoft Fabric. By implementing a Medallion architecture, we will ingest, clean, transform, and model historical sales data to generate accurate future sales forecasts. This solution aims to empower the retailer with data-driven insights for improved inventory management, resource allocation, and overall business strategy, ultimately driving efficiency and profitability.
 
-Local retailers often face challenges in accurately predicting future sales due to various factors like seasonality, promotions, and changing customer behavior. Inaccurate forecasts can lead to stockouts or overstocking, impacting revenue and operational efficiency. This project aims to develop a robust sales prediction model using historical sales data provided by the retailer. The goal is to predict future sales trends for different goods, enabling better business planning and decision-making.
+## 2. Problem Statement
 
-## Architecture (Medallion)
+Local retailers often struggle with accurate sales forecasting due to complex factors like seasonality, promotions, and economic shifts. These inaccuracies lead to significant operational inefficiencies, including costly stockouts (lost sales) or overstocking (increased holding costs and waste). This project addresses the critical need for a reliable prediction system by analyzing historical sales patterns for various goods. The primary goal is to predict sales volume for specific future periods (e.g., weekly, monthly), enabling proactive decision-making.
 
-We utilize the Medallion architecture within Microsoft Fabric to structure our data processing pipeline, ensuring data quality and scalability.
+## 3. The Solution
+
+The  solution:
+*   **Data Ingestion:** Utilizin Dataflow Gen 2 to ingest raw sales data.
+*   **Data Processing:** Implementation of a Medallion architecture (Bronze, Silver, Gold layers) within a Fabric Lakehouseusing Notebooks (PySpark) and Dataflows Gen2 for robust cleaning, transformation, and aggregation.
+*   **Modeling:** Develop and train time-series forecasting models  (ARIMA, Prophet, & Multiple regression) using the curated Gold layer data within Fabric Notebooks. Utilize MLflow integrated within Fabric for experiment tracking and model management.
+*   **Visualization:** Using Power BI connected to the Gold layer (Lakehouse/Warehouse) to present forecasts, model performance, and key business insights through interactive dashboards, & Also leveraging Gen AI to simplify data querying, forecasting and reduce accessibility requirements to the data and analysis.
+
+## 4. Architecture Overview
+
+The solution follows the Medallion architecture:
+*   **Bronze:** Raw data storage in OneLake.
+*   **Silver:** Cleaned, conformed data stored as Delta tables in the Lakehouse.
+*   **Gold:** Aggregated, analysis-ready data (features for modeling, reporting views) stored in the Lakehouse or Warehouse.
+
+
+### Architecture (Medallion)
+
+This is an overview of the architecture defining the data pipeline from start to finish
+
+architectural Overview
+
+
+![alt text](image-1.png)
+
+
+
+The Actual Medallion Layer
+
 
 ![Medallion Architecture](image.png)
 
 ### Bronze Layer
 
-*   **Purpose:** Ingests raw, unprocessed data from source systems.
-*   **Data:** Raw sales transaction data from the local retailer (e.g., CSV files, database dumps). Data is kept in its original format with minimal changes, primarily for archival and lineage tracking.
-*   **Fabric Components:** Data Factory pipelines or Dataflows Gen2 for ingestion, OneLake/Lakehouse for storage.
+*   **Purpose:** Ingests raw, unprocessed data from source systems, we utilize a data flow gen 2 pipeline to Ingest Data
+*   **Data:** Raw sales transaction data from the local retailer (e.g.,Excel Files). Data is kept in its original format with minimal changes, primarily for archival and lineage tracking.
+*   **Fabric Components:** Dataflows Gen2 for ingestion, OneLake/Lakehouse for storage. Storage is done in a single lakehouse before initial transformations
 
+Notebook implementation can be found here:
 ### Silver Layer
 
-*   **Purpose:** Cleansed, conformed, and enriched data ready for analysis.
-*   **Data:** Raw data is transformed, validated, and standardized. This includes handling missing values, correcting data types, joining related datasets (e.g., product details, store information), and potentially creating basic features. Data is often stored in optimized formats like Delta tables.
-*   **Fabric Components:** Notebooks (PySpark/Spark SQL) or Dataflows Gen2 for transformations, Lakehouse for storage.
+*   **Purpose:** Enriching and Formatting Data for analysis. Data from the transformation steps is further enriched in this level
+*   **Data:** Raw data is transformed, validated, and standardized. This includes handling missing values, correcting data types. We also undertook a lot of pivoting of data to the shape that we wanted in this stage.
+*   **Fabric Components:** Notebooks (PySpark/Spark SQL) & Dataflows Gen2 for transformations, Lakehouse for storage.
+
+Notebook Implementation can be found here:
 
 ### Gold Layer
 
 *   **Purpose:** Curated, aggregated data optimized for specific business use cases and analytics.
-*   **Data:** Data is aggregated to the required level for sales prediction (e.g., daily/weekly sales per product/store). Features relevant for forecasting models are engineered. This layer serves as the source for reporting dashboards and machine learning models.
+*   **Data:** Data is aggregated to the required level for sales prediction (Annual sales per product/store). Features relevant for forecasting models are engineered. This layer serves as the source for reporting dashboards and machine learning models.
 *   **Fabric Components:** Notebooks (PySpark/Spark SQL) for aggregation and feature engineering, Lakehouse/Warehouse for storage, Power BI datasets for reporting.
+
+Notebook Implementation can be found here:
 
 # Implementation Details
 
 ## Data Preparation Flow
 
-1.  **Ingestion:** Raw sales data files (e.g., daily transaction logs) are ingested into the Bronze layer of the Lakehouse using Fabric Data Factory pipelines or Dataflows.
+1.  **Ingestion:** Raw sales data files are ingested into the Bronze layer of the Lakehouse using Fabric Data Factory pipelines or Dataflows.
 2.  **Initial Storage:** Data is stored in its original format in the 'Files' section or as basic Delta tables within the Bronze zone of OneLake.
 
 ## Data Processing Flow
@@ -57,7 +89,7 @@ We utilize the Medallion architecture within Microsoft Fabric to structure our d
 ## Fabric Features & Azure AI
 
 *   **Microsoft Fabric:** Leverages OneLake, Lakehouse, Warehouse, Data Factory, Dataflows Gen2, Notebooks (Spark), MLflow integration, and Power BI for an integrated data platform experience.
-*   **Azure AI (Potential):**
+*   **Azure AI Implementation:**
     *   **Azure Machine Learning:** Can be integrated for advanced model training, deployment, and monitoring beyond Fabric's built-in capabilities. MLflow within Fabric facilitates this transition.
     *   **Azure OpenAI / AI Search:** The curated Gold layer data (e.g., `PivotedSalesQuantity`) can be surfaced to Azure AI services. For instance, Azure OpenAI could be used to enable natural language querying of sales trends or insights directly from the processed data stored in the Lakehouse/Warehouse. This allows business users to ask questions like "What were the top 3 selling products in Q4 2024?" or "Summarize the sales trend for Product X over the last year."
 
