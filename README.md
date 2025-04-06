@@ -83,7 +83,7 @@ Notebook Implementation can be found here:
 2.  **Silver to Gold:** Notebooks process the cleaned Silver layer data. This involves:
     *   Aggregating data to the desired granularity (e.g., calculating total monthly quantity and revenue per product).
     *   Transforming data into a structure suitable for modeling, such as pivoting the table to have time periods (Year, Month) as rows and products as columns, with sales quantity as values (e.g., `PivotedSalesQuantity` table).
-    *   Further feature engineering (lag features, rolling averages) might be applied here depending on the modeling approach.
+    *   Further feature engineering (lag features, rolling averages) are applied here.
     The final, curated, and aggregated data is stored in the Gold layer, ready for reporting and ML model training.
 
 ## Fabric Features & Azure AI
