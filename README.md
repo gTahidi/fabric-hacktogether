@@ -49,14 +49,14 @@ The Actual Medallion Layer
 *   **Data:** Raw sales transaction data from the local retailer (e.g.,Excel Files). Data is kept in its original format with minimal changes, primarily for archival and lineage tracking.
 *   **Fabric Components:** Dataflows Gen2 for ingestion, OneLake/Lakehouse for storage. Storage is done in a single lakehouse before initial transformations
 
-Notebook implementation can be found here:
+Notebook implementation can be found here[Spice_Test.ipynb](pipeline/Spice_Test_1_1.ipynb):
 ### Silver Layer
 
 *   **Purpose:** Enriching and Formatting Data for analysis. Data from the transformation steps is further enriched in this level
 *   **Data:** Raw data is transformed, validated, and standardized. This includes handling missing values, correcting data types. We also undertook a lot of pivoting of data to the shape that we wanted in this stage.
 *   **Fabric Components:** Notebooks (PySpark/Spark SQL) & Dataflows Gen2 for transformations, Lakehouse for storage.
 
-Notebook Implementation can be found here:
+Notebook Implementation can be found here[Spice_Test.ipynb](pipeline/Spice_Test_1_1.ipynb):
 
 ### Gold Layer
 
@@ -64,7 +64,7 @@ Notebook Implementation can be found here:
 *   **Data:** Data is aggregated to the required level for sales prediction (Annual sales per product/store). Features relevant for forecasting models are engineered. This layer serves as the source for reporting dashboards and machine learning models.
 *   **Fabric Components:** Notebooks (PySpark/Spark SQL) for aggregation and feature engineering, Lakehouse/Warehouse for storage, Power BI datasets for reporting.
 
-Notebook Implementation can be found here:
+Notebook Implementation can be found here[Automl.ipynb](Machine Learning/prediction/Automl.ipynb):
 
 # Implementation Details
 

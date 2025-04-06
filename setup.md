@@ -58,4 +58,5 @@ The Medallion architecture provides clear separation:
     *   Delta Lake (underlying format for Lakehouse tables)
 
 
-
+## Set up Flow after Completion
+![alt text](image-2.png)
