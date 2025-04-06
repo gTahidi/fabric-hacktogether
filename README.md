@@ -5,11 +5,11 @@
 
 ## 1. Abstract/Summary
 
-This project proposes the development of a sales prediction solution for a local retailing company,  leveraging the unified analytics capabilities of Microsoft Fabric. By implementing a Medallion architecture, we will ingest, clean, transform, and model historical sales data to generate accurate future sales forecasts. This solution aims to empower the retailer with data-driven insights for improved inventory management, resource allocation, and overall business strategy, ultimately driving efficiency and profitability.
+This project proposes the development of a sales prediction solution for a local retailing company,  leveraging the unified analytics capabilities of Microsoft Fabric. By implementing a Medallion architecture, we will ingest, clean, transform, and model historical sales, & relative inventory  data to generate accurate future Demand forecasts, model sales overtime and help in inventory planning. The solution aims to optimize resource allocation, and overall business strategy, ultimately driving efficiency and profitability.
 
 ## 2. Problem Statement
 
-Local retailers often struggle with accurate sales forecasting due to complex factors like seasonality, promotions, and economic shifts. These inaccuracies lead to significant operational inefficiencies, including costly stockouts (lost sales) or overstocking (increased holding costs and waste). This project addresses the critical need for a reliable prediction system by analyzing historical sales patterns for various goods. The primary goal is to predict sales volume for specific future periods (e.g., weekly, monthly), enabling proactive decision-making.
+Local retailers often struggle with accurate sales forecasting due to complex factors like seasonality, promotions, and economic shifts. These inaccuracies lead to significant operational inefficiencies, including costly stockouts (lost sales) or overstocking (increased holding costs and waste). This project addresses the critical need for a reliable prediction system by analyzing common patterns from accessible data for various goods. The primary goal is to predict sales, price & demand(e.g., weekly, monthly), enabling proactive decision-making.
 
 ## 3. The Solution
 
@@ -83,7 +83,7 @@ Notebook Implementation can be found here[Automl.ipynb](Machine Learning/predict
 2.  **Silver to Gold:** Notebooks process the cleaned Silver layer data. This involves:
     *   Aggregating data to the desired granularity (e.g., calculating total monthly quantity and revenue per product).
     *   Transforming data into a structure suitable for modeling, such as pivoting the table to have time periods (Year, Month) as rows and products as columns, with sales quantity as values (e.g., `PivotedSalesQuantity` table).
-    *   Further feature engineering (lag features, rolling averages) might be applied here depending on the modeling approach.
+    *   Further feature engineering (lag features, rolling averages) are applied here.
     The final, curated, and aggregated data is stored in the Gold layer, ready for reporting and ML model training.
 
 ## Fabric Features & Azure AI
