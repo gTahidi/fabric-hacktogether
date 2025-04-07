@@ -1,0 +1,59 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+  displayName: 'Set up Python 3.x'
+
+- script: |
+    echo "Installing dependencies..."
+    # Install dependencies for automl_pipeline and model
+    if [ -f "Machine Learning/automl_pipeline/requirements.txt" ]; then
+      pip install -r "Machine Learning/automl_pipeline/requirements.txt"
+    else
+      echo "No requirements file found in Machine Learning/automl_pipeline."
+    fi
+    if [ -f "Machine Learning/model/requirements.txt" ]; then
+      pip install -r "Machine Learning/model/requirements.txt"
+    else
+      echo "No requirements file found in Machine Learning/model."
+    fi
+    # Install papermill to execute notebooks
+    pip install papermill
+  displayName: 'Install Python Dependencies and Papermill'
+
+- script: |
+    echo "Running pipeline notebook using papermill..."
+    mkdir -p pipeline/output
+    papermill pipeline/Spice_Test_1_1.ipynb pipeline/output/Spice_Test_1_1_output.ipynb
+  displayName: 'Execute Pipeline Notebook (Spice_Test_1_1.ipynb)'
+
+- script: |
+    echo "Running tests..."
+    # Placeholder for additional test commands
+    # For example, run pytest if tests are defined
+  displayName: 'Run Tests'
+
+- script: |
+    echo "Packaging build artifacts..."
+    # Bundle artifacts from key folders: Machine Learning artifacts, Visualizations, and pipeline outputs.
+    mkdir -p artifact_output
+    cp -R "Machine Learning" artifact_output/ 
+    cp -R "Visualizations" artifact_output/
+    cp -R "pipeline/output" artifact_output/
+  displayName: 'Package Artifacts'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'artifact_output'
+    ArtifactName: 'drop'
+  displayName: 'Publish Packaged Artifacts'
+
+
