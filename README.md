@@ -91,5 +91,6 @@ Notebook Implementation can be found here[Automl.ipynb](Machine Learning/predict
 *   **Microsoft Fabric:** Leverages OneLake, Lakehouse, Warehouse, Data Factory, Dataflows Gen2, Notebooks (Spark), MLflow integration, and Power BI for an integrated data platform experience.
 *   **Azure AI Implementation:**
     We implemented Azure OPen AI using gpt-40 and using fabric connectors to the gold data warehouse. We also hooked up the outout of our multiple regression machine learning models to the Large Langugage model to get more clarity on the predictions, and forecasting. The notebook implementation can be found here [Genai.ipynb](GenAI/Genai.ipynb)
+Some sample responses can be seen in the screenshots below:
 
-
+![alt text](image-3.png)
