@@ -17,7 +17,7 @@ The  solution:
 *   **Data Ingestion:** Utilizin Dataflow Gen 2 to ingest raw sales data.
 *   **Data Processing:** Implementation of a Medallion architecture (Bronze, Silver, Gold layers) within a Fabric Lakehouseusing Notebooks (PySpark) and Dataflows Gen2 for robust cleaning, transformation, and aggregation.
 *   **Modeling:** Develop and train time-series forecasting models  (ARIMA, Prophet, & Multiple regression) using the curated Gold layer data within Fabric Notebooks. Utilize MLflow integrated within Fabric for experiment tracking and model management.
-*   **Visualization:** Using Power BI connected to the Gold layer (Lakehouse/Warehouse) to present forecasts, model performance, and key business insights through interactive dashboards, & Also leveraging Gen AI to simplify data querying, forecasting and reduce accessibility requirements to the data and analysis.
+*   **Visualization:** Using Power BI connected to the Gold layer (Lakehouse/Warehouse) to present forecasts, model performance, and key business insights through interactive dashboards, & Also leveraging Gen AI to simplify data querying, forecasting and reduce accessibility requirements to the data and analysis.The Pwer BI dashboard link can be found [here](https://app.fabric.microsoft.com/groups/8d3e063b-5552-4052-b919-22ef780dcf63/reports/21de9deb-26db-4c2d-aa97-0256ee62fd4e?ctid=e9fba1ee-d3b6-4595-b71c-1481db964a58&pbi_source=linkShare)
 
 ## 4. Architecture Overview
 
