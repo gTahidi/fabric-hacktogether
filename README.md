@@ -75,7 +75,7 @@ Notebook Implementation can be found here[Automl.ipynb](Machine Learning/predict
 
 ## Data Processing Flow
 
-1.  **Bronze to Silver:** Notebooks (like `Spice_Test.ipynb`) read raw data (e.g., `SalesData.csv`) from the Bronze layer. Cleaning involves:
+1.  **Bronze to Silver:** Notebooks (like `Spice_Test.ipynb`) reads raw data (e.g., `SalesData.csv`) from the Bronze layer. Cleaning involves:
     *   Handling null values in key columns (`Quantity Sold`, `Revenue`).
     *   Converting date columns to the correct `DateType`.
     *   Extracting date components (`Year`, `Month`, `Day`, `Weekday`) for easier analysis and feature engineering.
@@ -90,8 +90,6 @@ Notebook Implementation can be found here[Automl.ipynb](Machine Learning/predict
 
 *   **Microsoft Fabric:** Leverages OneLake, Lakehouse, Warehouse, Data Factory, Dataflows Gen2, Notebooks (Spark), MLflow integration, and Power BI for an integrated data platform experience.
 *   **Azure AI Implementation:**
-    *   **Azure Machine Learning:** Can be integrated for advanced model training, deployment, and monitoring beyond Fabric's built-in capabilities. MLflow within Fabric facilitates this transition.
-    *   **Azure OpenAI / AI Search:** The curated Gold layer data (e.g., `PivotedSalesQuantity`) can be surfaced to Azure AI services. For instance, Azure OpenAI could be used to enable natural language querying of sales trends or insights directly from the processed data stored in the Lakehouse/Warehouse. This allows business users to ask questions like "What were the top 3 selling products in Q4 2024?" or "Summarize the sales trend for Product X over the last year."
-
+    We implemented Azure OPen AI using gpt-40 and using fabric connectors to the gold data warehouse. We also hooked up the outout of our multiple regression machine learning models to the Large Langugage model to get more clarity on the predictions, and forecasting. The notebook implementation can be found here [Genai.ipynb](GenAI/Genai.ipynb)
 
 
