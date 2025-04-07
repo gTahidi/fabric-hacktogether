@@ -1,9 +1,7 @@
 # Microsoft Fabric Hackathon Proposal: Retail Sales Prediction
 ## Video Presentation Overview
 
-<div style="max-width:800px; margin: auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-  <iframe src="https://www.tella.tv/embed/video/retail-sales-forecasting-ebjr" width="100%" height="450" frameborder="0" allowfullscreen></iframe>
-</div>
+[![Video Preview](https://via.placeholder.com/800x450?text=Watch+Video)](https://www.tella.tv/embed/video/retail-sales-forecasting-ebjr)
 
 
 **Team/Submitter:** [Ujao AI ]
