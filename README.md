@@ -13,7 +13,7 @@ This project proposes the development of a sales prediction solution for a local
 
 ## 2. Problem Statement
 
-Local retailers often struggle with accurate sales forecasting due to complex factors like seasonality, promotions, and economic shifts. These inaccuracies lead to significant operational inefficiencies, including costly stockouts (lost sales) or overstocking (increased holding costs and waste). This project addresses the critical need for a reliable prediction system by analyzing common patterns from accessible data for various goods. The primary goal is to predict sales, price & demand(e.g., weekly, monthly), enabling proactive decision-making.
+Local retailers often struggle with accurate sales forecasting due to complex factors like seasonality, promotions, and economic shifts. These inaccuracies lead to significant operational inefficiencies, including costly stockouts (lost sales) or overstocking (increased holding costs and waste). This project addresses the need for a reliable prediction system by analyzing common patterns from accessible data for various goods. The primary goal is to predict sales, price & demand(e.g., weekly, monthly), enabling proactive decision-making.
 
 ## 3. The Solution
 
@@ -21,7 +21,8 @@ The  solution:
 *   **Data Ingestion:** Utilizin Dataflow Gen 2 to ingest raw sales data.
 *   **Data Processing:** Implementation of a Medallion architecture (Bronze, Silver, Gold layers) within a Fabric Lakehouseusing Notebooks (PySpark) and Dataflows Gen2 for robust cleaning, transformation, and aggregation.
 *   **Modeling:** Develop and train time-series forecasting models  (ARIMA, Prophet, & Multiple regression) using the curated Gold layer data within Fabric Notebooks. Utilize MLflow integrated within Fabric for experiment tracking and model management.
-*   **Visualization:** Using Power BI connected to the Gold layer (Lakehouse/Warehouse) to present forecasts, model performance, and key business insights through interactive dashboards, & Also leveraging Gen AI to simplify data querying, forecasting and reduce accessibility requirements to the data and analysis.The Pwer BI dashboard link can be found [here](https://app.fabric.microsoft.com/groups/8d3e063b-5552-4052-b919-22ef780dcf63/reports/21de9deb-26db-4c2d-aa97-0256ee62fd4e?ctid=e9fba1ee-d3b6-4595-b71c-1481db964a58&pbi_source=linkShare)
+*   **Visualization:** Using Power BI connected to the Gold layer (Lakehouse/Warehouse) to present forecasts, model performance, and key business insights through interactive dashboards.
+*   **GenAi** Leveraging Gen AI to simplify data querying, forecasting and reduce accessibility requirements to the data and analysis.The Power BI dashboard link can be found [here](https://app.fabric.microsoft.com/groups/8d3e063b-5552-4052-b919-22ef780dcf63/reports/21de9deb-26db-4c2d-aa97-0256ee62fd4e?ctid=e9fba1ee-d3b6-4595-b71c-1481db964a58&pbi_source=linkShare)
 
 ## 4. Architecture Overview
 
