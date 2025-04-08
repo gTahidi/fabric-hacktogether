@@ -69,7 +69,7 @@ Notebook Implementation can be found here[Spice_Test.ipynb](pipeline/Spice_Test_
 *   **Data:** Data is aggregated to the required level for sales prediction (Annual sales per product/store). Features relevant for forecasting models are engineered. This layer serves as the source for reporting dashboards and machine learning models.
 *   **Fabric Components:** Notebooks (PySpark/Spark SQL) for aggregation and feature engineering, Lakehouse/Warehouse for storage, Power BI datasets for reporting.
 
-Notebook Implementation can be found here[Automl.ipynb](Machine Learning/prediction/Automl.ipynb):
+Notebook Implementation can be found here[Automl.ipynb]('Machine Learning'/prediction/Automl.ipynb):
 
 # Implementation Details
 
